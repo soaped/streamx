@@ -18,23 +18,36 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.streamxhub.streamx.console.core.service;
+package com.streamxhub.streamx.console.core.enums;
 
-import com.streamxhub.streamx.console.core.entity.Application;
+import java.util.Arrays;
 
-import java.io.Serializable;
-
-/**
- * @author benjobs
- */
-public interface AlertService {
+public enum CheckPointStatus {
+    /**
+     * IN_PROGRESS
+     */
+    IN_PROGRESS(1),
+    /**
+     * COMPLETED
+     */
+    COMPLETED(2),
 
     /**
-     * alert
-     *
-     * @param application
+     * FAILED
      */
-    void alert(Application application, Serializable state);
+    FAILED(3);
 
+    int value;
 
+    public int get() {
+        return this.value;
+    }
+
+    CheckPointStatus(int value) {
+        this.value = value;
+    }
+
+    public static CheckPointStatus of(Integer value) {
+        return Arrays.stream(values()).filter((x) -> x.value == value).findFirst().orElse(null);
+    }
 }
