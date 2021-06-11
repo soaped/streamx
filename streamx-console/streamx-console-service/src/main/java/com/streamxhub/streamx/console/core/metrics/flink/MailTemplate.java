@@ -18,22 +18,28 @@
  * specific language governing permissions and limitations
  * under the License.
  */
-package com.streamxhub.streamx.flink.core.java.function;
+package com.streamxhub.streamx.console.core.metrics.flink;
 
+import lombok.Data;
 
 import java.io.Serializable;
 
 /**
  * @author benjobs
  */
-@FunctionalInterface
-public interface SQLQueryFunction<T> extends Serializable {
-    /**
-     * 获取要查询的SQL
-     *
-     * @param last: last one
-     * @return String: sql
-     */
-    String query(T last) throws Exception;
-
+@Data
+public class MailTemplate implements Serializable {
+    private String title;
+    private String jobName;
+    private String status;
+    private Integer type;
+    private String startTime;
+    private String endTime;
+    private String duration;
+    private String link;
+    private String cpFailureRateInterval;
+    private Integer cpMaxFailureInterval;
+    private Boolean restart;
+    private Integer restartIndex;
+    private Integer totalRestart;
 }
